@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image - slider</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: darkgrey
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            
+        }
+
+        .slider {
+            width: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+
+        }
+
+        .slides img {
+            width: 300px;
+            flex-shrink: 0;
+            border-radius: 1rem;
+        }
+        .ctrl{
+            width: 100%;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        button{
+            font-weight: 400;
+            background-color: rgb(55, 55, 100);
+            width: 4rem;
+            height: 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+        }
+    </style>
+    <div class="slider">
+        <div class="slides">
+            <img src="https://picsum.photos/200">
+            <img src="https://picsum.photos/205">
+            <img src="https://picsum.photos/210">
+            <img src="https://picsum.photos/215">
+
+        </div>
+        <div class="ctrl">
+            <button class="prev">⏮ prev</button>
+            <button class="next">next ⏭</button>
+        </div>
+    </div>
+    <script>
+        let index = 0;
+        const slides = document.querySelector(".slides");
+
+        function showSlide() {
+            slides.style.transform = `translateX(${-(index * 300)}px)`;
+        }
+        document.querySelector(".next").onclick = () => {
+            index++;
+            if (index > 3) {
+                index = 0;
+            }
+
+            showSlide();
+        };
+
+        document.querySelector(".prev").onclick = () => {
+            index--;
+            if (index < 0) {
+                index = 2
+            };
+            showSlide();
+        };
+    </script>
+</body>
+
+</html>
